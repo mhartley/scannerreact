@@ -174,6 +174,11 @@ export default class ScanScreen extends React.Component {
 
 		}
 	}
+
+	async openScannerCustom() {
+		const resultMessage = await Scanner.openIntent();
+		alert(resultMessage);
+	}
 	
 	renderCamera() {
 		return (
@@ -206,7 +211,7 @@ export default class ScanScreen extends React.Component {
 						<TouchableOpacity style={styles.flipButton} onPress={this.toggleFacing.bind(this)}>
 							<Text style={styles.flipText}> FLIP </Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={styles.flipButton} onPress={()=> Scanner.openIntent(()=> alert('success'), ()=> alert('error'))}>
+						<TouchableOpacity style={styles.flipButton} onPress={this.openScannerCustom}>
 							<Text style={styles.flipText}> CUSTOM SCAN </Text>
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.flipButton} onPress={() => alert(DeviceInfo.getUniqueID())}>
